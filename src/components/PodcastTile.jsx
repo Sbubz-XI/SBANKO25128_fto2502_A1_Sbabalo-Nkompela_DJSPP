@@ -1,5 +1,4 @@
 import React from "react";
-import { fetchAllPodcasts } from "../utils/api.js";
 import { useNavigate } from "react-router-dom";
 import { genres } from "../data/genres.js";
 
@@ -33,14 +32,17 @@ export default function PodcastTile({ podcast }) {
   return (
     <div
       onClick={handleClick}
-      className="border border-gray-200 shadow-lg rounded-lg overflow-hidden bg-white transition-transform duration-300 cursor-pointer p-4 h-full flex flex-col justify-center hover:scale-105"
+      className="border border-gray-200 shadow-lg rounded-lg overflow-hidden bg-white transition-transform duration-300 cursor-pointer p-4 h-auto flex flex-col justify-center hover:scale-105"
     >
-      <img
+      <div className=" w-full h-80% mb-2">
+         <img
         src={podcast.image}
         alt={podcast.title}
-        className="w-full h-auto object-cover rounded-lg mb-3"
+        className="w-full h-full bg-contain bg-center object-cover rounded-lg mb-3"
       />
-      <div className="pl-2">
+      </div>
+     
+      <div className="flex flex-col flex-grow">
         <div className="text-xl font-extrabold mb-1">{podcast.title}</div>
 
         <div className="flex flex-wrap gap-1 text-sm font-semibold text-gray-700">

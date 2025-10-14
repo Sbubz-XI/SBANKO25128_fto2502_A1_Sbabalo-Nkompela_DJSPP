@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 /**
 
  * @param {object} props
- * @param {(search: string) => void} props.onSearch - Callback to set the search state in App.jsx.
- * @param {boolean} props.visible - Controls the visibility of the search bar.
+ * @param {(search: string) => void} props.onSearch
+ * @param {boolean} props.visible 
  */
 export default function SearchBar({ onSearch, visible }) {
   
