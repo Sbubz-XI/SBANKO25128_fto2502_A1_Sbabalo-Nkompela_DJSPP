@@ -17,7 +17,7 @@ export default function Header() {
     <header className="relative bg-white border-gray-400 shadow h-15 flex items-center pl-4 justify-between">
       
       <div className="flex items-center space-x-2">
-        <div className="bg-[url('/src/assets/S.N.S Logo.png')] bg-cover bg-center h-10 w-10"></div>
+        <img src="./src/assets/S.N.S Logo.png" className="bg-cover bg-center h-10 w-10" alt="Logo" />
         <div className="text-lg font-semibold">S.N.S Podcast</div>
       </div>
 
@@ -42,7 +42,7 @@ export default function Header() {
 
       
       {showSearch && (
-        <div className="absolute top-12 right-4">
+        <div className="absolute top-3 right-0">
           <SearchBar onSearch={handleSearch} visible={showSearch} />
         </div>
       )}

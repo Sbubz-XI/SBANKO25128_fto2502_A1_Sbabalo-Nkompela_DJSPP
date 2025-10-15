@@ -22,7 +22,7 @@ export default function SearchBar({ onSearch, visible }) {
 
   return (
     <div
-      className={`absolute top-5 right-20 transition-opacity duration-300 ${
+      className={`absolute top-0 right-20 transition-all duration-500 ease-in ${
         visible ? "opacity-100 visible" : "opacity-0 invisible"
       }`}
     >

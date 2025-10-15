@@ -34,10 +34,20 @@ export default function ShowDetail() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-  // Get genre titles
-  const genreTitles = (podcast.genres || []).map(
-    (genreId) => allGenres.find((g) => g.id === genreId)?.title || "Unknown"
-  );
+  const genreTitles = (podcast.genres || []).map((genre) => {
+
+    if (typeof genre === "number") {
+      return allGenres.find((g) => g.id === genre)?.title || "Unknown";
+    }
+
+    // If it's already a string, just return it directly
+    if (typeof genre === "string") {
+      return genre;
+    }
+
+    return "Unknown";
+  });
+
 
   const formattedDate = podcast.updated ? formatDate(podcast.updated) : null;
   const podcastSeasons = podcast.seasons || [];

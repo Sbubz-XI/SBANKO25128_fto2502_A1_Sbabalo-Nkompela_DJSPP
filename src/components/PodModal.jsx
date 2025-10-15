@@ -3,8 +3,6 @@ import { genres } from "../data/genres.js";
 import "./PodModal.css";
 
 /**
- * PodModal component displays detailed information about a single podcast
- *
  * @param {object} props - Component properties.
  * @param {object} props.podcast - The podcast data object.
  * @param {function} props.onClose - Function to call when the modal is closed.
@@ -25,7 +23,8 @@ function PodModal({ podcast, onClose }) {
         day: "numeric",
       })
     : "";
-
+      
+    console.log("Modal podcast genres:", podcast.genres);
     const genreTitles = getGenreTitles(podcast.genres);
 
     const podcastSeasons = podcast.seasons || [];
@@ -97,6 +96,7 @@ function PodModal({ podcast, onClose }) {
                   key={season.id || index}
                   className="flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition-colors rounded-lg border border-gray-200 p-4"
                 >
+
                   <h3 className="font-semibold text-gray-800">{season.title}</h3>
                   <span className="text-sm text-gray-600 font-medium">
                     {season.episodes?.length || 0} episodes
