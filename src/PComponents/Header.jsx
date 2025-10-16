@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+// Header.jsx
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../components/SearchBar.jsx";
 import { useSearch } from "../context/SearchContext.jsx";
+import { useTheme } from "../context/ThemeContext.jsx";
 
 export default function Header() {
   const [showSearch, setShowSearch] = useState(false);
   const { setSearch } = useSearch();
+  const { isDark, toggleTheme } = useTheme();
 
   
   const handleSearch = (term) => {
@@ -14,19 +17,19 @@ export default function Header() {
 
 
   return (
-    <header className="relative bg-white border-gray-400 shadow h-15 flex items-center pl-4 justify-between">
+    <header className="relative bg-[#a0fc4f19] text-[#9577b2] dark:bg-[#52178F] border-gray-400 shadow h-15 flex items-center pl-4 justify-between">
       
       <div className="flex items-center space-x-2">
-        <img src="./src/assets/sns.jpg" className="bg-cover bg-center h-15 w-auto" alt="Logo" />
+        <img src="./src/assets/S.N.S Logo.png" className="bg-cover bg-center h-15 w-auto" alt="Logo" />
         <div className="text-lg font-semibold">S.N.S Podcast</div>
       </div>
 
       
       <nav className="flex items-center space-x-4">
-        <Link to="/" className="hover:underline">
+        <Link to="/" className="dark:text-[#48E12A] hover:underline">
           Home
         </Link>
-        <Link to="/favourites" className="hover:underline">
+        <Link to="/favourites" className="dark:text-[#48E12A] hover:underline">
           Favourites
         </Link>
       </nav>
@@ -37,12 +40,20 @@ export default function Header() {
           onClick={() => setShowSearch((prev) => !prev)}
           className="bg-[url('/src/assets/loupe.png')] bg-cover bg-center h-4 w-4 cursor-pointer"
         ></div>
+
+        <button
+          onClick={toggleTheme}
+          className="px-4 py-2 rounded-lg border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+        >
+          {isDark ? "☀️" : "🌑"}
+        </button>
+
         <div className="bg-[url('/src/assets/profile.png')] bg-cover bg-center h-6 w-6"></div>
       </div>
 
       
       {showSearch && (
-        <div className="absolute top-3 right-0">
+        <div className="absolute top-2.5 right-16">
           <SearchBar onSearch={handleSearch} visible={showSearch} />
         </div>
       )}

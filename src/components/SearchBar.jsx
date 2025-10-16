@@ -31,7 +31,7 @@ export default function SearchBar({ onSearch, visible }) {
         placeholder="Search all podcasts…"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="w-64 px-4 py-2 border border-gray-300 rounded-lg shadow-lg text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        className="lg:w-55 md:w-30 px-4 py-2 border border-gray-300 dark:border-[#48E12A] rounded-lg shadow-lg text-sm text-gray-800 dark:text-[#48E12A] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
       />
     </div>
   );
