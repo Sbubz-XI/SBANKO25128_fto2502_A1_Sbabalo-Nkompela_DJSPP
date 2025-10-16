@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchPodcastById } from "../utils/api.js";
+import SeasonEpisodes from "../components/SeasonEpisodes.jsx";
 import { genres as allGenres } from "../data/genres.js";
 
 export default function ShowDetail() {
@@ -9,19 +10,26 @@ export default function ShowDetail() {
   const [podcast, setPodcast] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  
-  const formatDate = (dateStr) => {
-    const date = new Date(dateStr);
-    if (isNaN(date.getTime())) return "Unknown";
-    return date.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
-  };
+  const [selectedSeason, setSelectedSeason] = useState(null);
+  const [favourites, setFavourites] = useState(
+    JSON.parse(localStorage.getItem("favourites")) || []
+  );
 
   useEffect(() => {
     async function fetchShow() {
       try {
         const data = await fetchPodcastById(id);
         setPodcast(data);
+
+        if (data.seasons && data.seasons.length > 0) {
+          setSelectedSeason({
+            ...data.seasons[0],
+            id: data.seasons[0].id || data.seasons[0].title,
+            episodes: data.seasons[0].episodes || [],
+            podcastImage: data.image,
+            podcastTitle: data.title,
+          });
+        }
       } catch (err) {
         setError("Failed to load podcast.");
       } finally {
@@ -31,30 +39,63 @@ export default function ShowDetail() {
     fetchShow();
   }, [id]);
 
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+    if (isNaN(date.getTime())) return "Unknown";
+    return date.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
+  const addToFavourites = (episode) => {
+    const stored = [...favourites];
+    if (!stored.find((ep) => ep.id === episode.id)) {
+      stored.push({
+        ...episode,
+        podcastImage: podcast.image,
+        podcastTitle: podcast.title,
+      });
+      localStorage.setItem("favourites", JSON.stringify(stored));
+      setFavourites(stored);
+      alert(`${episode.title} added to favourites!`);
+    }
+  };
+
+  const fetchSeasonDetails = async (seasonId) => {
+    if (!seasonId) return;
+    try {
+      const response = await fetch(`https://podcast-api.netlify.app/id/${seasonId}`);
+      if (!response.ok) throw new Error("Invalid season ID");
+      const data = await response.json();
+
+      setSelectedSeason((prev) => ({
+        ...prev,
+        ...data,
+        id: data.id || prev.id,
+        episodes: data.episodes || prev.episodes,
+        podcastImage: podcast.image,
+        podcastTitle: podcast.title,
+      }));
+    } catch (err) {
+      console.error("Failed to fetch deeper season details:", err);
+    }
+  };
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
   const genreTitles = (podcast.genres || []).map((genre) => {
-
-    if (typeof genre === "number") {
-      return allGenres.find((g) => g.id === genre)?.title || "Unknown";
-    }
-
-    // If it's already a string, just return it directly
-    if (typeof genre === "string") {
-      return genre;
-    }
-
+    if (typeof genre === "number") return allGenres.find((g) => g.id === genre)?.title || "Unknown";
+    if (typeof genre === "string") return genre;
     return "Unknown";
   });
 
-
   const formattedDate = podcast.updated ? formatDate(podcast.updated) : null;
-  const podcastSeasons = podcast.seasons || [];
 
   return (
     <div className="p-6 max-w-5xl mx-auto bg-white rounded-lg shadow-md">
-      {/* Back button */}
       <button
         onClick={() => navigate(-1)}
         className="mb-6 px-4 py-2 border border-gray-300 rounded-lg text-gray-600 font-semibold hover:bg-gray-100"
@@ -62,10 +103,8 @@ export default function ShowDetail() {
         ← Back
       </button>
 
-      {/* Title */}
       <h1 className="text-2xl md:text-3xl font-bold mb-4">{podcast.title}</h1>
 
-      {/* Podcast Image & Description */}
       <div className="flex flex-col md:flex-row gap-6 mb-6">
         <img
           src={podcast.image}
@@ -80,7 +119,6 @@ export default function ShowDetail() {
         </div>
       </div>
 
-      {/* Genres */}
       {genreTitles.length > 0 && (
         <div className="mb-4">
           <h2 className="text-lg font-bold mb-3 text-gray-800">Genres</h2>
@@ -97,34 +135,20 @@ export default function ShowDetail() {
         </div>
       )}
 
-      {/* Last Updated */}
       {formattedDate && (
         <p className="text-sm text-gray-500 mb-6">
           <span className="font-semibold">Last updated:</span> {formattedDate}
         </p>
       )}
 
-      {/* Seasons */}
-      {podcastSeasons.length > 0 && (
-        <div className="mb-4">
-          <h2 className="text-lg font-bold mb-3 text-gray-800">
-            Seasons ({podcastSeasons.length})
-          </h2>
-          <div className="space-y-3 max-h-64 overflow-y-auto pr-2">
-            {podcastSeasons.map((season, index) => (
-              <div
-                key={season.id || index}
-                className="flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition-colors rounded-lg border border-gray-200 p-4"
-              >
-                <h3 className="font-semibold text-gray-800">{season.title}</h3>
-                <span className="text-sm text-gray-600 font-medium">
-                  {season.episodes?.length || 0} episodes
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      <SeasonEpisodes
+        seasons={podcast.seasons || []}
+        selectedSeason={selectedSeason}
+        setSelectedSeason={setSelectedSeason}
+        addToFavourites={addToFavourites}
+        favourites={favourites}
+        fetchSeasonDetails={fetchSeasonDetails}
+      />
     </div>
   );
 }
