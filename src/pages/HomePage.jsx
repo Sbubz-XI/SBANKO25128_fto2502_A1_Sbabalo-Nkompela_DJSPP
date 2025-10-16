@@ -6,6 +6,7 @@ import PodcastGrid from "../components/PodcastGrid.jsx";
 import Pagination from "../components/Pagination.jsx";
 import Filter from "../components/Filter.jsx";
 import SortBy from "../components/SortBy.jsx";
+import PodcastCarousel from "../components/PodcastCarousel.jsx";
 import { genres } from "../data/genres.js";
 
 export default function HomePage() {
@@ -57,7 +58,12 @@ export default function HomePage() {
   const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="pl-4 pr-4">
+    <div className="pl-4 pr-4 pt-1">
+
+      <div className="px-1">
+        <h1 className="text-3xl font-bold mb-6">Discover Podcasts</h1>
+        <PodcastCarousel />
+      </div>
       
       <div className="flex items-center mt-4 mb-8 space-x-4">
         <Filter genres={genres} selected={genreId} onChange={setGenreId} />
