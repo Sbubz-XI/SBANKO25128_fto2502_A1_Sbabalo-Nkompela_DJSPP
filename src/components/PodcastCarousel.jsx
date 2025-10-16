@@ -33,11 +33,13 @@ export default function PodcastCarousel() {
   if (podcasts.length === 0) return <div>Loading podcasts...</div>;
 
   return (
-    <div className="relative w-full py-4">
+    <div className="relative w-full pb-4 hidden sm:block">
+        <h1 className="text-3xl font-bold mb-6">Discover Podcasts</h1>
+
       {/* Left Arrow */}
       <button
         onClick={() => scroll("left")}
-        className="absolute left-0 top-1/3 -translate-y-1/2 z-10 bg-white/70 rounded-full p-2 shadow hover:bg-white/90"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/70 rounded-full p-2 shadow hover:bg-white/90"
       >
         ◀
       </button>
@@ -45,7 +47,7 @@ export default function PodcastCarousel() {
       {/* Right Arrow */}
       <button
         onClick={() => scroll("right")}
-        className="absolute right-0 top-1/3 -translate-y-1/2 z-10 bg-white/70 rounded-full p-2 shadow hover:bg-white/90"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/70 rounded-full p-2 shadow hover:bg-white/90"
       >
         ▶
       </button>

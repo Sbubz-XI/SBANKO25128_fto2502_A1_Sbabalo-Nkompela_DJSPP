@@ -61,7 +61,6 @@ export default function HomePage() {
     <div className="pl-4 pr-4 pt-1">
 
       <div className="px-1">
-        <h1 className="text-3xl font-bold mb-6">Discover Podcasts</h1>
         <PodcastCarousel />
       </div>
       

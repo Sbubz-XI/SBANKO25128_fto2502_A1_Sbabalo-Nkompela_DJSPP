@@ -21,7 +21,7 @@ export default function Header() {
       
       <div className="flex items-center space-x-2">
         <img src="./src/assets/S.N.S Logo.png" className="bg-cover bg-center h-15 w-auto" alt="Logo" />
-        <div className="text-lg font-semibold">S.N.S Podcast</div>
+        <div className="text-lg hidden sm:block font-semibold">S.N.S Podcast</div>
       </div>
 
       
