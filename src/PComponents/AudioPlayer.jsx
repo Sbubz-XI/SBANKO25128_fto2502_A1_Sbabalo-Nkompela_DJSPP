@@ -65,19 +65,19 @@ export default function AudioPlayer() {
         <div className="flex items-center space-x-3">
           <button
             onClick={() => seek(-10)}
-            className="px-2 py-1 bg-[#00E070] border border-[#FF6B35] dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
+            className="px-2 py-1 bg-[#00E070] border border-[#FF6B35]  dark:bg-[#9950E2] dark:border-[#48E12A] rounded hover:bg-gray-300 dark:hover:bg-gray-600"
           >
             ⏪
           </button>
           <button
             onClick={togglePlayPause}
-            className="px-3 py-1 rounded-lg bg-[#00E070] border border-[#FF6B35] hover:bg-blue-600 text-white"
+            className="px-3 py-1 rounded-lg bg-[#00E070] border border-[#FF6B35] dark:bg-[#9950E2] dark:border-[#48E12A] hover:bg-blue-600 text-white"
           >
             {isPlaying ? "⏸️" : "▶️"}
           </button>
           <button
             onClick={() => seek(10)}
-            className="px-2 py-1 bg-[#00E070] border border-[#FF6B35] dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
+            className="px-2 py-1 bg-[#00E070] border border-[#FF6B35] dark:bg-[#9950E2] dark:border-[#48E12A] rounded hover:bg-gray-300 dark:hover:bg-gray-600"
           >
             ⏩
           </button>
@@ -119,7 +119,7 @@ export default function AudioPlayer() {
           />
 
           {/* Queue button */}
-          <button className="px-2 py-1 bg-[#00E070] border border-[#FF6B35] dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
+          <button className="px-2 py-1 bg-[#00E070] border border-[#FF6B35] dark:bg-[#9950E2] dark:border-[#48E12A] rounded hover:bg-gray-300 dark:hover:bg-gray-600">
             📃
           </button>
         </div>

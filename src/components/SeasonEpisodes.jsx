@@ -51,7 +51,7 @@ export default function SeasonEpisodes({
               : null
           );
         }}
-        className="border border-[#006633]  bg-[#FFA585] text-white font-semibold rounded-lg p-2 w-auto mb-4"
+        className="border border-[#006633]  bg-[#FFA585] dark:text-[#48E12A] dark:bg-[#9950E2] dark:border-[#48E12A] text-white font-semibold rounded-lg p-2 w-auto mb-4"
       >
         {seasons.map((season, index) => (
           <option
