@@ -15,7 +15,7 @@ export default function SeasonEpisodes({
   return (
     <div className="mb-4">
       {/* Season Selector */}
-      <label className="text-lg font-bold mb-2 block text-gray-800">Select Season</label>
+      <label className="text-lg font-bold mb-2 block text-[#006633]">Select Season</label>
       <select
         value={selectedSeason?.id || ""}
         onChange={(e) => {
@@ -23,7 +23,7 @@ export default function SeasonEpisodes({
           const season = seasons.find((s) => s.id?.toString() === seasonId.toString());
           setSelectedSeason(season ? { ...season, episodes: season.episodes || [], podcastImage: selectedSeason?.podcastImage, podcastTitle: selectedSeason?.podcastTitle } : null);
         }}
-        className="border border-gray-300 rounded-lg p-2 w-full mb-4"
+        className="border border-[#006633] bg-[#FFA585] text-white font-semibold rounded-lg p-2 w-auto mb-4"
       >
         {seasons.map((season, index) => (
           <option key={season.id || season.title || index} value={season.id || season.title || index}>
@@ -35,7 +35,7 @@ export default function SeasonEpisodes({
       {/* Episodes List */}
       {selectedSeason && selectedSeason.episodes?.length > 0 ? (
         <div>
-          <h2 className="text-lg font-bold mb-3 text-gray-800">
+          <h2 className="text-lg font-bold mb-3 text-[#006633]">
             Episodes - {selectedSeason.title || "Select a season"}
           </h2>
 

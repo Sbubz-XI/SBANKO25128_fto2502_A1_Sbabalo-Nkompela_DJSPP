@@ -17,7 +17,7 @@ export default function Header() {
 
 
   return (
-    <header className="relative bg-[#a0fc4f19] text-[#9577b2] dark:bg-[#52178F] border-gray-400 shadow h-15 flex items-center pl-4 justify-between">
+    <header className="relative bg-[#006633] text-[#00E070] dark:bg-[#85EB70] dark:text-[#48E12A] border-[#FF6B35] shadow h-15 flex items-center pl-4 justify-between">
       
       <div className="flex items-center space-x-2">
         <img src="./src/assets/S.N.S Logo.png" className="bg-cover bg-center h-15 w-auto" alt="Logo" />
@@ -26,10 +26,10 @@ export default function Header() {
 
       
       <nav className="flex items-center space-x-4">
-        <Link to="/" className="dark:text-[#48E12A] hover:underline">
+        <Link to="/" className="text-lg font-semibold hover:underline">
           Home
         </Link>
-        <Link to="/favourites" className="dark:text-[#48E12A] hover:underline">
+        <Link to="/favourites" className="text-lg font-semibold hover:underline">
           Favourites
         </Link>
       </nav>

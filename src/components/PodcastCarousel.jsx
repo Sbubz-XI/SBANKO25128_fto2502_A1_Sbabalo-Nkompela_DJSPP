@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchAllPodcasts } from "../utils/api.js";
+import { genres } from "../data/genres.js";
+
+function getGenreTitles(ids) {
+  if (!ids?.length) return ["Unknown"];
+  return ids.map((id) => genres.find((g) => g.id === id)?.title || "Unknown");
+}
 
 export default function PodcastCarousel() {
   const [podcasts, setPodcasts] = useState([]);
@@ -22,19 +28,20 @@ export default function PodcastCarousel() {
 
   const scroll = (direction) => {
     if (!carouselRef.current) return;
-    const scrollAmount = 300; // adjust as needed
-    if (direction === "left") {
-      carouselRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    } else {
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
+    const scrollAmount = 300;
+    carouselRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
   };
 
   if (podcasts.length === 0) return <div>Loading podcasts...</div>;
 
   return (
     <div className="relative w-full pb-4 hidden sm:block">
-        <h1 className="text-3xl font-bold mb-6">Discover Podcasts</h1>
+      <h1 className="text-3xl font-bold mb-6 text-[#006633] dark:text-[#48E12A]">
+        Discover Podcasts
+      </h1>
 
       {/* Left Arrow */}
       <button
@@ -58,26 +65,39 @@ export default function PodcastCarousel() {
         className="flex gap-4 overflow-x-auto scrollbar-hide relative"
         style={{ scrollSnapType: "x mandatory" }}
       >
-        {/* Side fade overlays */}
-        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white pointer-events-none" />
+        {podcasts.map((podcast) => {
+          const genreTitles = getGenreTitles(podcast.genres);
 
-        {podcasts.map((podcast) => (
-          <div
-            key={podcast.id}
-            className="flex-none w-48 scroll-snap-align-start cursor-pointer hover:scale-105 transition-transform"
-            onClick={() => navigate(`/show/${podcast.id}`)}
-          >
-            <img
-              src={podcast.image}
-              alt={podcast.title}
-              className="w-full h-48 object-cover rounded-lg shadow-md"
-            />
-            <h3 className="text-sm font-semibold text-gray-800 mt-2">{podcast.title}</h3>
-          </div>
-        ))}
+          return (
+            <div
+              key={podcast.id}
+              className="flex-none w-48 border-[#006633] border bg-[#FF6B35] dark:bg-[#52178F] p-2 rounded-lg h-auto scroll-snap-align-start cursor-pointer hover:scale-105 transition-transform"
+              onClick={() => navigate(`/show/${podcast.id}`)}
+            >
+              <img
+                src={podcast.image}
+                alt={podcast.title}
+                className="w-full h-48 object-cover rounded-lg shadow-md"
+              />
+              <h3 className="text-center text-md font-bold text-[#006633] bg-[#00E070] rounded-2xl mt-2">
+                {podcast.title}
+              </h3>
+
+              {/* ✅ Genres */}
+              <div className="flex flex-wrap gap-1 mt-1 text-sm font-semibold text-[#006633]">
+                {genreTitles.map((title, index) => (
+                  <span
+                    key={index}
+                    className="text-sm font-bold px-1 rounded-lg border border-[#006633] bg-[#FFA585]"
+                  >
+                    {title}
+                  </span>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 }
-                                                                                                        

@@ -74,9 +74,9 @@ export default function HomePage() {
       </div>
 
       {loading ? (
-        <div className="flex flex-col justify-center items-center h-64 bg-white rounded-lg shadow-md">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500"></div>
-          <span className="mt-4 text-lg font-semibold text-gray-700">Loading podcasts...</span>
+        <div className="flex flex-col justify-center items-center h-screen bg-[#FFA585] rounded-lg shadow-md">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-[#006633]"></div>
+          <span className="mt-4 text-lg font-semibold text-white">Loading podcasts...</span>
         </div>
       ) : (
         <PodcastGrid podcasts={currentPagePodcasts} onPodcastClick={openPodcast} />

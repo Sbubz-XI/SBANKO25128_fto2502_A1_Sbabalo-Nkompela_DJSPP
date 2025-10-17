@@ -95,15 +95,15 @@ export default function ShowDetail() {
   const formattedDate = podcast.updated ? formatDate(podcast.updated) : null;
 
   return (
-    <div className="p-6 max-w-5xl mx-auto bg-white rounded-lg shadow-md">
+    <div className="p-6 max-w-5xl mx-auto bg-[#FF6B35] border-[#006633] border-2 rounded-lg shadow-md">
       <button
         onClick={() => navigate(-1)}
-        className="mb-6 px-4 py-2 border border-gray-300 rounded-lg text-gray-600 font-semibold hover:bg-gray-100"
+        className="mb-6 px-4 py-2 border border-[#006633] rounded-lg text-[#006633] bg-[#FFA585] font-bold hover:bg-gray-100"
       >
         ← Back
       </button>
 
-      <h1 className="text-2xl md:text-3xl font-bold mb-4">{podcast.title}</h1>
+      <h1 className="text-[#006633] text-2xl md:text-3xl font-bold mb-4">{podcast.title}</h1>
 
       <div className="flex flex-col md:flex-row gap-6 mb-6">
         <img
@@ -112,8 +112,8 @@ export default function ShowDetail() {
           className="w-full md:w-1/3 max-h-64 md:max-h-full rounded-lg object-cover shadow-lg"
         />
         <div className="md:w-2/3">
-          <h2 className="text-lg font-bold mb-2 text-gray-800">Description</h2>
-          <p className="text-gray-700 leading-relaxed overflow-y-auto max-h-40">
+          <h2 className="text-xl font-bold mb-2 text-[#006633]">Description</h2>
+          <p className="text-white font-semibold leading-relaxed overflow-y-auto max-h-60">
             {podcast.description || "No description available."}
           </p>
         </div>
@@ -121,7 +121,7 @@ export default function ShowDetail() {
 
       {genreTitles.length > 0 && (
         <div className="mb-4">
-          <h2 className="text-lg font-bold mb-3 text-gray-800">Genres</h2>
+          <h2 className="text-lg font-bold mb-3 text-[#006633]">Genres</h2>
           <div className="flex flex-wrap gap-1 text-sm font-semibold text-gray-700">
             {genreTitles.map((title, index) => (
               <span
@@ -136,7 +136,7 @@ export default function ShowDetail() {
       )}
 
       {formattedDate && (
-        <p className="text-sm text-gray-500 mb-6">
+        <p className="text-sm text-white mb-6">
           <span className="font-semibold">Last updated:</span> {formattedDate}
         </p>
       )}

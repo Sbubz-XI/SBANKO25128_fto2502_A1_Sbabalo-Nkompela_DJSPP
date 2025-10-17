@@ -34,7 +34,7 @@ export default function AudioPlayer() {
   return (
     <>
       <audio ref={audioRef} />
-      <div className="fixed bottom-0 left-0 right-0 bg-[#f26431] dark:bg-gray-800 border-t border-gray-300 dark:border-gray-700 p-3 flex items-center justify-between shadow-lg z-50">
+      <div className="fixed bottom-0 left-0 right-0 max-h-15 bg-[#006633] dark:bg-[#52178F] border border-[#FF6B35] dark:border-[#9950E2] p-3 flex items-center justify-between shadow-lg z-50">
 
         {/* Left: Track info */}
         <div className="flex items-center space-x-3 min-w-0">
@@ -46,7 +46,7 @@ export default function AudioPlayer() {
                 className="w-12 h-12 rounded-md object-cover"
               />
               <div className="truncate">
-                <div className="text-sm font-semibold text-gray-900 dark:text-white truncate">
+                <div className="text-sm font-semibold text-[#FF6B35] dark:text-[#52178F] truncuate">
                   {track.title}
                 </div>
                 <div className="text-xs text-gray-500 dark:text-gray-300 truncate">
@@ -55,7 +55,7 @@ export default function AudioPlayer() {
               </div>
             </>
           ) : (
-            <div className="text-gray-500 dark:text-gray-300 text-sm">
+            <div className="text-white text-md">
               No track playing
             </div>
           )}
@@ -65,19 +65,19 @@ export default function AudioPlayer() {
         <div className="flex items-center space-x-3">
           <button
             onClick={() => seek(-10)}
-            className="px-2 py-1 bg-[#59AEFA] dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
+            className="px-2 py-1 bg-[#00E070] border border-[#FF6B35] dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
           >
             ⏪
           </button>
           <button
             onClick={togglePlayPause}
-            className="px-3 py-1 rounded-lg bg-[#59AEFA] hover:bg-blue-600 text-white"
+            className="px-3 py-1 rounded-lg bg-[#00E070] border border-[#FF6B35] hover:bg-blue-600 text-white"
           >
             {isPlaying ? "⏸️" : "▶️"}
           </button>
           <button
             onClick={() => seek(10)}
-            className="px-2 py-1 bg-[#59AEFA] dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
+            className="px-2 py-1 bg-[#00E070] border border-[#FF6B35] dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
           >
             ⏩
           </button>
@@ -119,7 +119,7 @@ export default function AudioPlayer() {
           />
 
           {/* Queue button */}
-          <button className="px-2 py-1 bg-[#59AEFA] dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
+          <button className="px-2 py-1 bg-[#00E070] border border-[#FF6B35] dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
             📃
           </button>
         </div>

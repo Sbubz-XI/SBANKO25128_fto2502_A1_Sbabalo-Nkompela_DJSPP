@@ -18,7 +18,7 @@ export default function Favourites() {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold text-gray-800 mb-4">❤️ My Favourites</h1>
+      <h1 className="text-2xl font-bold text-[#006633] mb-4">❤️ My Favourites</h1>
 
       {favourites.length === 0 ? (
         <p className="text-gray-500">You have no favourite episodes yet.</p>
@@ -27,24 +27,18 @@ export default function Favourites() {
           {favourites.map((episode, index) => (
             <div
               key={episode.id || index}
-              className="bg-white shadow-md rounded-lg p-4 border border-gray-200 hover:shadow-lg transition"
+              className="bg-[#FF6B35] shadow-md rounded-lg p-4 border border-[#006633] hover:shadow-lg transition"
             >
               {episode.podcastImage && (
                 <img
                   src={episode.podcastImage}
                   alt={episode.podcastTitle}
-                  className="w-full h-48 bg-contain bg-center object-cover rounded-lg mb-3"
+                  className="w-full h-48 bg-contain bg-center object-cover rounded-lg mb-3 border border-[#006633]"
                 />
               )}
-              <h2 className="font-semibold text-gray-800 mb-2">{episode.title}</h2>
-              {episode.duration && (
-                <p className="text-sm text-gray-500">Duration: {episode.duration}</p>
-              )}
-              {episode.releaseDate && (
-                <p className="text-sm text-gray-500">Released: {episode.releaseDate}</p>
-              )}
+              <h2 className="font-bold text-xl text-[#006633] mb-2">{episode.title}</h2>
               {episode.podcastTitle && (
-                <p className="text-xs text-gray-400 mt-1">From: {episode.podcastTitle}</p>
+                <p className="text-sm font-bold text-[#00E070] mt-1">From: {episode.podcastTitle}</p>
               )}
 
               <button

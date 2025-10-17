@@ -32,7 +32,7 @@ export default function PodcastTile({ podcast }) {
   return (
     <div
       onClick={handleClick}
-      className="border border-gray-200 shadow-lg rounded-lg overflow-hidden bg-white transition-transform duration-300 cursor-pointer p-4 h-auto flex flex-col justify-center hover:scale-105"
+      className= "shadow-lg rounded-lg overflow-hidden border-[#006633] border bg-[#FF6B35] dark:bg-[#52178F] transition-transform duration-300 cursor-pointer p-4 h-auto flex flex-col justify-center hover:scale-105"
     >
       <div className=" w-full h-80% mb-2">
          <img
@@ -43,20 +43,20 @@ export default function PodcastTile({ podcast }) {
       </div>
      
       <div className="flex flex-col flex-grow">
-        <div className="text-xl font-extrabold mb-1">{podcast.title}</div>
+        <div className="text-xl text-center bg-[#00E070] rounded-2xl font-extrabold mb-2 p- text-[#006633]">{podcast.title}</div>
 
-        <div className="flex flex-wrap gap-1 text-sm font-semibold text-gray-700">
+        <div className="flex flex-wrap gap-1 text-sm font-semibold text-[#006633]">
           {genreTitles.map((title, index) => (
             <span
               key={index}
-              className="text-md font-bold px-1 py-0.5 rounded-lg border bg-gray-200 "
+              className="text-md font-bold px-1 py-0.5 rounded-lg border border-[#006633] bg-[#FFA585] "
             >
               {title}
             </span>
           ))}
         </div>
 
-        <div className="mt-2 text-gray-500 font-medium text-sm">
+        <div className="mt-2 text-white font-medium text-sm">
           Updated {timeAgo(podcast.updated)}
         </div>
       </div>
