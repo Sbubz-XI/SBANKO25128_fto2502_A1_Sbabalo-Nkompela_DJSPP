@@ -1,5 +1,5 @@
 // Header.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../components/SearchBar.jsx";
 import { useSearch } from "../context/SearchContext.jsx";
