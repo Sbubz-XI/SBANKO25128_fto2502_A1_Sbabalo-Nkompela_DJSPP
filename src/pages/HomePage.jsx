@@ -74,8 +74,8 @@ export default function HomePage() {
       </div>
 
       {loading ? (
-        <div className="flex flex-col justify-center items-center h-screen bg-[#FFA585] rounded-lg shadow-md">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-[#006633]"></div>
+        <div className="flex flex-col justify-center items-center h-screen bg-[#FFA585] dark:bg-[#9950E2] rounded-lg shadow-md">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-[#006633] dark:bg-[#48E12A]"></div>
           <span className="mt-4 text-lg font-semibold text-white">Loading podcasts...</span>
         </div>
       ) : (

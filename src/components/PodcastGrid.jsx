@@ -13,7 +13,7 @@ export default function PodcastGrid({ podcasts, onPodcastClick }) {
   return (
     <section
       aria-label="Podcast Grid"
-      className="bg-[#FFA585] md:px-1 lg:px-2 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+      className="bg-[#FFA585] dark:bg-[#9950E2] md:px-1 lg:px-2 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
     >
       {podcasts.map((podcast) => (
         <PodcastTile

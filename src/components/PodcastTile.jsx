@@ -32,7 +32,7 @@ export default function PodcastTile({ podcast }) {
   return (
     <div
       onClick={handleClick}
-      className= "shadow-lg rounded-lg overflow-hidden border-[#006633] border bg-[#FF6B35] dark:bg-[#52178F] transition-transform duration-300 cursor-pointer p-4 h-auto flex flex-col justify-center hover:scale-105"
+      className= "shadow-lg rounded-lg overflow-hidden border-[#006633] border bg-[#FF6B35] dark:bg-[#52178F] transition-transform duration-300 cursor-pointer p-4 lg:h-auto md:h-auto h-25 flex flex-col justify-center hover:scale-105"
     >
       <div className=" w-full h-80% mb-2">
          <img

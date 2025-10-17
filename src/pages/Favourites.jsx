@@ -1,3 +1,4 @@
+// Favourites.jsx
 import React, { useEffect, useState } from "react";
 
 export default function Favourites() {
@@ -17,17 +18,17 @@ export default function Favourites() {
   const isFavourite = (episode) => favourites.some((ep) => ep.id === episode.id);
 
   return (
-    <div className="p-6">
+    <div className="flex flex-col text-center p-6">
       <h1 className="text-2xl font-bold text-[#006633] mb-4">❤️ My Favourites</h1>
 
       {favourites.length === 0 ? (
-        <p className="text-gray-500">You have no favourite episodes yet.</p>
+        <p className="font-bold text-white">You have no favourite episodes yet.</p>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {favourites.map((episode, index) => (
             <div
               key={episode.id || index}
-              className="bg-[#FF6B35] shadow-md rounded-lg p-4 border border-[#006633] hover:shadow-lg transition"
+              className="bg-[#FF6B35] dark:bg-[#52178F] shadow-md rounded-lg p-4 border border-[#006633] hover:shadow-lg transition"
             >
               {episode.podcastImage && (
                 <img
@@ -36,7 +37,7 @@ export default function Favourites() {
                   className="w-full h-48 bg-contain bg-center object-cover rounded-lg mb-3 border border-[#006633]"
                 />
               )}
-              <h2 className="font-bold text-xl text-[#006633] mb-2">{episode.title}</h2>
+              <h2 className="font-bold text-xl text-[#006633] dark:text-[#48E12A] mb-2">{episode.title}</h2>
               {episode.podcastTitle && (
                 <p className="text-sm font-bold text-[#00E070] mt-1">From: {episode.podcastTitle}</p>
               )}

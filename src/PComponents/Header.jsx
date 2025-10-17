@@ -17,7 +17,7 @@ export default function Header() {
 
 
   return (
-    <header className="relative bg-[#006633] text-[#00E070] dark:bg-[#85EB70] dark:text-[#48E12A] border-[#FF6B35] shadow h-15 flex items-center pl-4 justify-between">
+    <header className="relative bg-[#006633] text-[#00E070] border-[#FF6B35] shadow max-h-20 flex items-center pl-4 justify-between">
       
       <div className="flex items-center space-x-2">
         <img src="./src/assets/S.N.S Logo.png" className="bg-cover bg-center h-15 w-auto" alt="Logo" />
