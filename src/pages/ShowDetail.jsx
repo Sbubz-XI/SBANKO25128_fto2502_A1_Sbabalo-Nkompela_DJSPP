@@ -1,3 +1,4 @@
+// ShowDetail.jsx
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchPodcastById } from "../utils/api.js";
@@ -11,9 +12,9 @@ export default function ShowDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedSeason, setSelectedSeason] = useState(null);
-  const [favourites, setFavourites] = useState(
-    JSON.parse(localStorage.getItem("favourites")) || []
-  );
+ const [favourites, setFavourites] = useState(
+  JSON.parse(localStorage.getItem("favourites")) || []
+);
 
   useEffect(() => {
     async function fetchShow() {
@@ -95,15 +96,15 @@ export default function ShowDetail() {
   const formattedDate = podcast.updated ? formatDate(podcast.updated) : null;
 
   return (
-    <div className="p-6 max-w-5xl mx-auto bg-[#FF6B35] border-[#006633] border-2 rounded-lg shadow-md">
+    <div className="p-6 max-w-5xl mx-auto bg-[#FF6B35] dark:bg-[#52178F] border-[#006633] border-2 rounded-lg shadow-md">
       <button
         onClick={() => navigate(-1)}
-        className="mb-6 px-4 py-2 border border-[#006633] rounded-lg text-[#006633] bg-[#FFA585] font-bold hover:bg-gray-100"
+        className="mb-6 px-4 py-2 border border-[#006633] rounded-lg text-[#006633] dark:text-[#48E12A] dark:bg-[#9950E2] dark:border-[#48E12A] bg-[#FFA585] font-bold hover:bg-gray-100"
       >
         ← Back
       </button>
 
-      <h1 className="text-[#006633] text-2xl md:text-3xl font-bold mb-4">{podcast.title}</h1>
+      <h1 className="text-[#006633]  dark:text-[#48E12A] text-2xl md:text-3xl font-bold mb-4">{podcast.title}</h1>
 
       <div className="flex flex-col md:flex-row gap-6 mb-6">
         <img
@@ -112,7 +113,7 @@ export default function ShowDetail() {
           className="w-full md:w-1/3 max-h-64 md:max-h-full rounded-lg object-cover shadow-lg"
         />
         <div className="md:w-2/3">
-          <h2 className="text-xl font-bold mb-2 text-[#006633]">Description</h2>
+          <h2 className="text-xl font-bold mb-2 text-[#006633]  dark:text-[#48E12A]">Description</h2>
           <p className="text-white font-semibold leading-relaxed overflow-y-auto max-h-60">
             {podcast.description || "No description available."}
           </p>
@@ -121,7 +122,7 @@ export default function ShowDetail() {
 
       {genreTitles.length > 0 && (
         <div className="mb-4">
-          <h2 className="text-lg font-bold mb-3 text-[#006633]">Genres</h2>
+          <h2 className="text-lg font-bold mb-3 text-[#006633]  dark:text-[#48E12A]">Genres</h2>
           <div className="flex flex-wrap gap-1 text-sm font-semibold text-gray-700">
             {genreTitles.map((title, index) => (
               <span
@@ -142,13 +143,13 @@ export default function ShowDetail() {
       )}
 
       <SeasonEpisodes
-        seasons={podcast.seasons || []}
+        seasons={podcast?.seasons || []}
         selectedSeason={selectedSeason}
         setSelectedSeason={setSelectedSeason}
-        addToFavourites={addToFavourites}
         favourites={favourites}
-        fetchSeasonDetails={fetchSeasonDetails}
+        setFavourites={setFavourites}
       />
+
     </div>
   );
 }

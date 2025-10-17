@@ -19,7 +19,7 @@ export default function Favourites() {
 
   return (
     <div className="flex flex-col text-center p-6">
-      <h1 className="text-2xl font-bold text-[#006633] mb-4">❤️ My Favourites</h1>
+      <h1 className="text-2xl font-bold text-[#006633] dark:text-[#48E12A] mb-4">❤️ My Favourites</h1>
 
       {favourites.length === 0 ? (
         <p className="font-bold text-white">You have no favourite episodes yet.</p>
