@@ -48,42 +48,8 @@ export default function ShowDetail() {
       month: "long",
       day: "numeric",
     });
-  };
-
-  const addToFavourites = (episode) => {
-    const stored = [...favourites];
-    if (!stored.find((ep) => ep.id === episode.id)) {
-      stored.push({
-        ...episode,
-        podcastImage: podcast.image,
-        podcastTitle: podcast.title,
-      });
-      localStorage.setItem("favourites", JSON.stringify(stored));
-      setFavourites(stored);
-      alert(`${episode.title} added to favourites!`);
-    }
-  };
-
-  const fetchSeasonDetails = async (seasonId) => {
-    if (!seasonId) return;
-    try {
-      const response = await fetch(`https://podcast-api.netlify.app/id/${seasonId}`);
-      if (!response.ok) throw new Error("Invalid season ID");
-      const data = await response.json();
-
-      setSelectedSeason((prev) => ({
-        ...prev,
-        ...data,
-        id: data.id || prev.id,
-        episodes: data.episodes || prev.episodes,
-        podcastImage: podcast.image,
-        podcastTitle: podcast.title,
-      }));
-    } catch (err) {
-      console.error("Failed to fetch deeper season details:", err);
-    }
-  };
-
+  }
+  
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 

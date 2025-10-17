@@ -1,104 +1,31 @@
-# 🎧 DJS Portfolio Piece – Podcast App (React)
+# Project Brief: React Podcast App
 
-## 📋 Overview
+Hey there! I built a React-based podcast app where you can browse, play, and favourite episodes. The app also has a carousel for recommended episodes, a theme toggle, and an audio player so you can listen directly in the app.  
 
-In this final phase, you will enhance the podcast app you've been building throughout the DJS course. The app already includes a landing page with searchable, sortable, and filterable podcast previews, as well as a show detail page with season toggling.
+Check it out here: [SNS Podcasts](https://snspodcasts.vercel.app/)
 
-This project introduces key new features including global audio playback, favouriting episodes, deployment best practices, UI enhancements, and optional listening progress tracking.
+## What I Built
 
-Your goal is to build a polished, production-ready React application that offers an engaging and seamless user experience.
+### Recommended Carousel
+I added a carousel to show recommended podcast episodes. It scrolls smoothly and works on all screen sizes. You can click arrows or swipe on mobile to check out different episodes.
 
-> **Tip:** You are encouraged to explore the React ecosystem to help implement features efficiently.
+### Favourites Page
+I made a Favourites page where you can see all the episodes you’ve marked as your favourites. Each episode is added individually so you don’t get duplicates. You can also remove any episode you don’t want anymore, and everything is saved in `localStorage`.
 
-## 🎯 Objectives
+### Theme Toggle
+I added a simple light/dark mode toggle. Clicking it switches the theme across the entire app, and it remembers your choice even if you refresh or come back later.
 
-- Implement a global audio player with full playback control
-- Add support for favouriting episodes with persistent storage
-- Introduce a recommended shows carousel on the landing page
-- Support theme toggling (light/dark mode)
-- Ensure robust routing and deploy the app with professional polish
-- Optionally track listening progress across episodes and sessions
+### Audio Player
+The audio player lets you play podcast episodes right in the app. You can play, pause, and seek through episodes. Each episode keeps its playback state so your experience is smooth.
 
-## 🚀 Core Features & User Stories
+## How It Went
+Honestly, this project was really tough. I struggled a lot with:
 
-### 🛠️ Setup and Deployment
+- Making sure each episode could be favourited individually without messing up the rest.
+- Keeping the theme consistent everywhere.
+- Managing the audio player state across different components.
 
-- Deploy your app to **Vercel** using a **custom domain or URL**
-- Add a **custom favicon** for easy identification in browser tabs
-- Use tools like [metatags.io](https://metatags.io) to set **rich social media preview metadata**
-- Ensure that direct access to dynamic routes (e.g. `/show/1`) works correctly (SPA routing fallback)
+But I kept researching, asked peers for help, and used resources on the Student LMS. In the end, everything worked… maybe not perfectly, but partially successful!  
 
-### 🔊 Global Audio Player
-
-- Play audio using the provided **placeholder API**
-- Keep the player **fixed at the bottom** of the screen across all pages
-- Ensure **uninterrupted playback** when navigating between pages
-- Provide **play, pause, seek, and progress tracking**
-- Add a **confirmation prompt** on page reloads during playback
-
-### ❤️ Favourites
-
-- Allow users to **favourite or unfavourite episodes** via a button/icon
-- Use **localStorage** to persist favourites across sessions
-- Provide **visual feedback** for favourited items (e.g., filled heart)
-- Create a **favourites page** displaying all saved episodes
-- Display **associated show and season** for each favourite
-- Show the **date/time added** to favourites
-- **Group favourites by show title**
-- Add **sorting options**:
-  - A–Z / Z–A by title
-  - Newest / Oldest by date added
-
-### 🎠 Recommended Shows Carousel
-
-- Add a **horizontally scrollable carousel** to the landing page
-- Show each show’s **image, title, and genre tags**
-- Support **looping** and navigation via **swipe or arrows**
-- Clicking a carousel item should navigate to the **show’s detail page**
-
-### 🌗 Theme Toggle
-
-- Include a **toggle** for switching between light and dark mode
-- **Persist theme selection** using `localStorage`
-- Ensure the **entire app UI updates smoothly**
-- Use **appropriate icons** (e.g., sun/moon) to indicate current theme
-- Reflect selected theme across all views and components
-
-## 🌟 Stretch Goal – Listening Progress (Optional)
-
-- Save playback position per episode and **resume playback**
-- Mark episodes as **"finished"** once fully played
-- Display **progress indicators** for episodes in progress
-- Allow users to **reset listening history**
-- Save listening history in local storage
-
-## ✅ Deliverables
-
-- A fully functional and deployed podcast app
-- Source code in **GitHub** with clear commit history
-- Live demo link (**Vercel**)
-- (Optional) Short demo video
-
-## 💡 Tips
-
-- Prioritise **user experience** and **clean component structure**
-- Use **React best practices** (components, hooks, state management)
-- Ensure the app is **responsive** and **mobile-friendly**
-- Test localStorage and audio persistence thoroughly
-- Make use of the **React ecosystem** to accelerate development!
-
----
-
-## 🧑‍⚖️ Panel Review
-
-After submitting your project, you will be required to present your work to a coach or panel of coaches.
-
-During this session, you must:
-
-- **Demonstrate** all the features you have implemented in your application.
-- **Explain** how each feature was built, referring directly to your code (e.g., components, state, hooks, storage).
-- Discuss the **decisions** you made during development (e.g., choice of libraries, structure, naming conventions).
-- Break down the **logic** behind key functionalities (e.g., how audio persistence or favouriting works).
-- Be prepared to answer **questions** from the coaches about your project, code structure, and implementation choices.
-
-This is your opportunity to showcase both your technical and problem-solving skills—treat it like a real-world project revsiew.
+## Conclusion
+Overall, I got all the main features working: carousel, favourites page, theme toggle, and audio player. I learned a ton about React, state management, and handling persistent data. It was a challenge, but totally worth it!
